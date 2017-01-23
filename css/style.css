@@ -95,11 +95,24 @@ body h4
     font-size: 14px;
 }
 
+.b-window-box__field.long-field {
+    height: 90px;
+    text-align: left;
+}
+
+.b-window-box__field.long-field-h {
+    height: 50px;
+}
+
+.b-window-box__field.long-field label {
+    line-height: 22px;
+}
+
 .footer {
     padding-top: 35px;
 }
 
-.footer > * {
+.pdf .footer > * {
     font-family: Times New Roman;
 }
 

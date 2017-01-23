@@ -456,7 +456,6 @@ function addField(item) {
   var widthVal = $('#b-field__width').val();
   if (widthVal >= 0) {
     var num = parseFloat(widthVal);
-    console.log(num);
 
     if (isNaN(num)) {
       $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(0);
@@ -483,17 +482,102 @@ function addField(item) {
 
 };
 
+function addFieldBalcony(item) {
+  var fieldLength = $('#b-calc__balconyTide .b-default__add-field').length;
+  console.log('fieldLength');
+
+  if (fieldLength <= 0) {
+    $('<div class="b-default__add-field">'+ 
+      '<div class="b-sill__style">'+
+        '<select id="sill-style" name="sill-style" class="custom-select">'+
+          '<option value="Металл (белый)">Металл (белый)</option>'+
+          '<option value="Металл (другой)">Металл (другой)</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-width">'+
+        '<label for="b-level-3__balcony-width-sill">Ширина</label>'+
+        '<select id="b-level-3__balcony-width-sill" name="b-level-3__balcony-width-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="150">150</option>'+
+          '<option value="200">200</option>'+
+          '<option value="250">250</option>'+
+          '<option value="300">300</option>'+
+          '<option value="350">350</option>'+
+          '<option value="400">400</option>'+
+          '<option value="450">450</option>'+
+          '<option value="500">500</option>'+
+          '<option value="550">550</option>'+
+          '<option value="600">600</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-sill__height">'+
+        '<label for="b-level-3__balcony-height-sill">Длина</label>'+
+        '<select id="b-level-3__balcony-height-sill" name="b-level-3__balcony-height-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="3000">3000</option>'+
+          '<option value="3500">3500</option>'+
+        '</select>'+
+      '</div>'+
+      '<a href="" class="sill__remove"></a>'+
+      '</div>')
+    .fadeIn('slow')
+    .prependTo(item);
+
+    if (fieldLength == 0) {
+      $('#b-calc__balconyTide #add-field__balconyTide').css('display', 'none');
+    }
+  } 
+
+  $('.custom-select').styler({
+    selectSmartPositioning: false 
+  });
+
+  $('.sill__remove').click(function(event) {
+    event.preventDefault();
+
+    $('#b-calc__balconyTide #add-field__balconyTide').css('display', 'inline-block');
+    $(this).parent('.b-default__add-field').remove();
+  });
+
+  var widthVal = $('#b-field__balcony-width').val();
+  if (widthVal >= 0) {
+    var num = parseFloat(widthVal);
+    console.log(num);
+
+    if (isNaN(num)) {
+      $('#b-level-3__balcony-height-sill-styler .jq-selectbox__select-text').text(0);
+      $('#b-level-3__balcony-height-sill option:first').text(0);
+      $('#b-level-3__balcony-height-sill option:first').val(0);
+      console.log('test')
+    } else {
+      $('#b-level-3__balcony-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__balcony-height-sill option:first').text(num);
+      $('#b-level-3__balcony-height-sill option:first').val(num);
+    }
+
+    $('#b-field__balcony-width').on('input', function() {
+      var widthVal = $(this).val();
+      var $heightVal = $('#b-level-3__balcony-height-styler .jq-selectbox__select-text').text();
+      var num = parseFloat(widthVal);
+
+      console.log(num);
+      $('#b-level-3__balcony-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__balcony-height-sill option:first').text(num);
+      $('#b-level-3__balcony-height-sill option:first').val(num);
+    });
+  }
+
+};
+
 
 $('#add-field__sill').click(function(event) {
   event.preventDefault();
-  console.log('test');
 
   addFieldWindowsill('#b-calc__sill');
 });
 
 $('#add-field__balconySill').click(function(event) {
   event.preventDefault();
-  console.log('test');
 
   addFieldBalconySill('#b-calc__balconySill');
 });
@@ -503,6 +587,12 @@ $('#add-field__tide').click(function(event) {
   event.preventDefault();
 
   addField('#b-calc__tide');
+});
+
+$('#add-field__balconyTide').click(function(event) {
+  event.preventDefault();
+
+  addFieldBalcony('#b-calc__balconyTide');
 });
 
 
