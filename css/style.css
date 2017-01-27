@@ -1424,6 +1424,11 @@ input:-moz-placeholder
     height: 500px;
 }
 
+.b-frame__frame-box {
+    position: relative;
+    height: 570px;
+}
+
 .b-window-box__level-2,
 .b-window-box__level-3,
 .b-window-box__level-1,
@@ -1433,7 +1438,11 @@ input:-moz-placeholder
 .b-balcony-box__level-4,
 .b-balcony-box__level-5,
 .b-balcony-box__level-6,
-.b-balcony-box__level-7
+.b-balcony-box__level-7,
+.b-frame-box__level-3,
+.b-frame-box__level-4,
+.b-frame-box__level-5,
+.b-frame-box__level-6
 {
     display: none;
 }
@@ -1441,7 +1450,9 @@ input:-moz-placeholder
 .b-window__height,
 .b-window__width,
 .b-balcony__height,
-.b-balcony__width
+.b-balcony__width,
+.b-frame__width,
+.b-frame__height
 {
     color: #e53b40;
 }
@@ -1449,7 +1460,9 @@ input:-moz-placeholder
 .b-window__height span,
 .b-window__width span,
 .b-balcony__height span,
-.b-balcony__width span
+.b-balcony__width span,
+.b-frame__height span,
+.b-frame__width span
 {
     color: #202020;
 }
@@ -1457,7 +1470,7 @@ input:-moz-placeholder
 .b-level-1__balcony,
 .b-level-4__balcony,
 .b-level-6__balcony {
-    max-width: 220px;
+    max-width: 205px;
     margin: 0 auto;
     font-size: 0;
 }
@@ -1547,7 +1560,11 @@ input:-moz-placeholder
 .b-level-4__balcony,
 .b-level-5__balcony,
 .b-level-6__balcony,
-.b-level-7__balcony
+.b-level-7__balcony,
+.b-level-3__frame,
+.b-level-4__frame,
+.b-level-5__frame,
+.b-level-6__frame
 {
     font-size: 0;
 
@@ -1567,18 +1584,61 @@ input:-moz-placeholder
     width: 220px;
 }
 
-.b-level-3__window
+.b-level-3__window,
+.b-level-3__frame
 {
     width: 84%;
 }
 
-.b-level-3__window div
+.b-level-4__frame,
+.b-level-5__frame,
+.b-level-6__frame {
+    width: 84%;
+}
+
+.b-level-3__window div,
+.b-level-3__frame div
 {
     font-size: 16px;
 
     display: inline-block;
 
     width: 33.333333333333336%;
+}
+
+.b-level-4__frame div,
+.b-level-5__frame div {
+    font-size: 16px;
+    display: inline-block;
+    width: 25%;
+    position: relative;
+}
+
+.b-level-6__frame div {
+    font-size: 16px;
+    display: inline-block;
+    width: 20%;
+    position: relative;
+}
+
+.b-level-5__frame div,
+.b-level-6__frame div {
+    padding-right: 8.5px;
+    overflow: hidden;
+}
+
+.part {
+    position: absolute;
+    background: url(../img/calc/part.png) 0 0 no-repeat;
+    top: 0;
+    width: 10px;
+    height: 139px;
+    right: 0;
+}
+
+.b-level-5__frame .b-frame__1,
+.b-level-5__frame .b-frame__2{
+    margin-right: -8.5px;
 }
 
 .b-level-1__window div
@@ -1593,7 +1653,8 @@ input:-moz-placeholder
 }
 
 .b-level-2__window img,
-.b-level-3__window img
+.b-level-3__window img,
+.b-frame-3__window img
 {
     max-width: 112px;
 }
@@ -1630,7 +1691,9 @@ input:-moz-placeholder
 .b-window__height,
 .b-window__width,
 .b-balcony__width,
-.b-balcony__height
+.b-balcony__height,
+.b-frame__height,
+.b-frame__width
 {
     position: absolute;
 }
@@ -1643,7 +1706,8 @@ input:-moz-placeholder
     text-align: center;
 }
 
-.b-window__width
+.b-window__width,
+.b-frame__width
 {
     top: 30px;
 
@@ -1653,7 +1717,8 @@ input:-moz-placeholder
     text-align: center;
 }
 
-.b-window__height
+.b-window__height,
+.b-frame__height
 {
     top: 50%;
     left: -58px;
@@ -1663,7 +1728,8 @@ input:-moz-placeholder
 }
 
 .b-window-box__field,
-.b-balcony-box__field
+.b-balcony-box__field,
+.b-frame-box__field
 {
     height: 50px;
     margin-bottom: 0;
@@ -1690,7 +1756,8 @@ input:-moz-placeholder
 }
 
 .b-window-box__field label,
-.b-balcony-box__field label
+.b-balcony-box__field label,
+.b-frame-box__field label
 {
     line-height: 36px;
 }
@@ -2093,6 +2160,34 @@ input[type='checkbox']:checked + label
     padding-left: 30px !important;
 
     background: url(../img/icon-window3.png) 0 2px no-repeat !important;
+}
+
+.b-default__frame1
+{
+    padding-left: 25px !important;
+
+    background: url(../img/icon-window3.png) 0 2px no-repeat !important;
+}
+
+.b-default__frame2
+{
+    padding-left: 32px !important;
+
+    background: url(../img/icon-window4.png) 0 2px no-repeat !important;
+}
+
+.b-default__frame3
+{
+    padding-left: 38px !important;
+
+    background: url(../img/icon-window5.png) 0 2px no-repeat !important;
+}
+
+.b-default__frame4
+{
+    padding-left: 63px !important;
+
+    background: url(../img/icon-window6.png) 0 2px no-repeat !important;
 }
 
 .b-default__select

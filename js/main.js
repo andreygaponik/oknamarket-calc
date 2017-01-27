@@ -396,21 +396,20 @@ function addFieldBalconySill(item) {
 
 };
 
+function addFieldFrameSill(item) {
+  var fieldLength = $('#b-calc__frameSill .b-default__add-field').length;
 
-function addField(item) {
-  var fieldLength = $('#b-calc__tide .b-default__add-field').length;
-
-  if (fieldLength <= 0) {
+  if (fieldLength <= 1) {
     $('<div class="b-default__add-field">'+ 
       '<div class="b-sill__style">'+
         '<select id="sill-style" name="sill-style" class="custom-select">'+
-          '<option value="Металл (белый)">Металл (белый)</option>'+
-          '<option value="Металл (другой)">Металл (другой)</option>'+
+          '<option value="ПВХ (белый)">ПВХ (белый)</option>'+
+          '<option value="ПВХ (moeller)">ПВХ (moeller)</option>'+
         '</select>'+
       '</div>'+
       '<div class="b-width">'+
-        '<label for="b-level-3__window-width-sill">Ширина</label>'+
-        '<select id="b-level-3__window-width-sill" name="b-level-3__window-width-sill" class="custom-select">'+
+        '<label for="b-level-3__frame-width">Ширина</label>'+
+        '<select id="b-level-3__frame-width" name="b-level-3__frame-width" class="custom-select">'+
           '<option value="100">100</option>'+
           '<option value="150">150</option>'+
           '<option value="200">200</option>'+
@@ -425,9 +424,9 @@ function addField(item) {
         '</select>'+
       '</div>'+
       '<div class="b-sill__height">'+
-        '<label for="b-level-3__window-height-sill">Длина</label>'+
-        '<select id="b-level-3__window-height-sill" name="b-level-3__window-height-sill" class="custom-select">'+
-          '<option value="100">100</option>'+
+        '<label for="b-level-3__frame-height">Длина</label>'+
+        '<select id="b-level-3__frame-height" name="b-level-3__frame-height" class="custom-select">'+
+          '<option value="0">0</option>'+
           '<option value="3000">3000</option>'+
           '<option value="3500">3500</option>'+
         '</select>'+
@@ -437,10 +436,10 @@ function addField(item) {
     .fadeIn('slow')
     .prependTo(item);
 
-    if (fieldLength == 0) {
-      $('#b-calc__tide #add-field__tide').css('display', 'none');
+    if (fieldLength == 1) {
+      $('#b-calc__frameSill #add-field__frameSill').css('display', 'none');
     }
-  } 
+  }
 
   $('.custom-select').styler({
     selectSmartPositioning: false 
@@ -449,38 +448,43 @@ function addField(item) {
   $('.sill__remove').click(function(event) {
     event.preventDefault();
 
-    $('#b-calc__tide #add-field__tide').css('display', 'inline-block');
+    $('#b-calc__frameSill #add-field__frameSill').css('display', 'inline-block');
     $(this).parent('.b-default__add-field').remove();
   });
 
-  var widthVal = $('#b-field__width').val();
+  var widthVal = $('#b-field__frame-width').val();
   if (widthVal >= 0) {
     var num = parseFloat(widthVal);
 
     if (isNaN(num)) {
-      $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(0);
-      $('#b-level-3__window-height-sill option:first').text(0);
-      $('#b-level-3__window-height-sill option:first').val(0);
-      console.log('test')
+      $('#b-level-3__frame-height-styler .jq-selectbox__select-text').text(0);
+      $('#b-level-3__frame-height option:first').text(0);
+      $('#b-level-3__frame-height option:first').val(0);
     } else {
-      $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(num);
-      $('#b-level-3__window-height-sill option:first').text(num);
-      $('#b-level-3__window-height-sill option:first').val(num);
+      $('#b-level-3__frame-height-styler .jq-selectbox__select-text').text(num + 100);
+      $('#b-level-3__frame-height option:first').text(num + 100);
+      $('#b-level-3__frame-height option:first').val(num + 100);
     }
 
-    $('#b-field__width').on('input', function() {
+    $('#b-field__frame-width').on('input', function() {
+      console.log('test');
       var widthVal = $(this).val();
-      var $heightVal = $('#b-level-3__window-height-styler .jq-selectbox__select-text').text();
+      var $heightVal = $('#b-level-3__frame-height-styler .jq-selectbox__select-text').text();
       var num = parseFloat(widthVal);
 
       console.log(num);
-      $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(num);
-      $('#b-level-3__window-height-sill option:first').text(num);
-      $('#b-level-3__window-height-sill option:first').val(num);
+      $('#b-level-3__frame-height-styler .jq-selectbox__select-text').text(num + 100);
+      $('#b-level-3__frame-height option:first').text(num + 100);
     });
   }
 
 };
+
+$('#add-field__frameSill').click(function(event) {
+  event.preventDefault();
+
+  addFieldFrameSill('#b-calc__frameSill');
+});
 
 function addFieldBalcony(item) {
   var fieldLength = $('#b-calc__balconyTide .b-default__add-field').length;
@@ -570,6 +574,183 @@ function addFieldBalcony(item) {
 };
 
 
+function addField(item) {
+  var fieldLength = $('#b-calc__tide .b-default__add-field').length;
+
+  if (fieldLength <= 0) {
+    $('<div class="b-default__add-field">'+ 
+      '<div class="b-sill__style">'+
+        '<select id="sill-style" name="sill-style" class="custom-select">'+
+          '<option value="Металл (белый)">Металл (белый)</option>'+
+          '<option value="Металл (другой)">Металл (другой)</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-width">'+
+        '<label for="b-level-3__window-width-sill">Ширина</label>'+
+        '<select id="b-level-3__window-width-sill" name="b-level-3__window-width-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="150">150</option>'+
+          '<option value="200">200</option>'+
+          '<option value="250">250</option>'+
+          '<option value="300">300</option>'+
+          '<option value="350">350</option>'+
+          '<option value="400">400</option>'+
+          '<option value="450">450</option>'+
+          '<option value="500">500</option>'+
+          '<option value="550">550</option>'+
+          '<option value="600">600</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-sill__height">'+
+        '<label for="b-level-3__window-height-sill">Длина</label>'+
+        '<select id="b-level-3__window-height-sill" name="b-level-3__window-height-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="3000">3000</option>'+
+          '<option value="3500">3500</option>'+
+        '</select>'+
+      '</div>'+
+      '<a href="" class="sill__remove"></a>'+
+      '</div>')
+    .fadeIn('slow')
+    .prependTo(item);
+
+    if (fieldLength == 0) {
+      $('#b-calc__tide #add-field__tide').css('display', 'none');
+    }
+  } 
+
+  $('.custom-select').styler({
+    selectSmartPositioning: false 
+  });
+
+  $('.sill__remove').click(function(event) {
+    event.preventDefault();
+
+    $('#b-calc__tide #add-field__tide').css('display', 'inline-block');
+    $(this).parent('.b-default__add-field').remove();
+  });
+
+  var widthVal = $('#b-field__width').val();
+  if (widthVal >= 0) {
+    var num = parseFloat(widthVal);
+
+    if (isNaN(num)) {
+      $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(0);
+      $('#b-level-3__window-height-sill option:first').text(0);
+      $('#b-level-3__window-height-sill option:first').val(0);
+      console.log('test')
+    } else {
+      $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__window-height-sill option:first').text(num);
+      $('#b-level-3__window-height-sill option:first').val(num);
+    }
+
+    $('#b-field__width').on('input', function() {
+      var widthVal = $(this).val();
+      var $heightVal = $('#b-level-3__window-height-styler .jq-selectbox__select-text').text();
+      var num = parseFloat(widthVal);
+
+      console.log(num);
+      $('#b-level-3__window-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__window-height-sill option:first').text(num);
+      $('#b-level-3__window-height-sill option:first').val(num);
+    });
+  }
+
+};
+
+function addFieldFrame(item) {
+  var fieldLength = $('#b-calc__frameTide .b-default__add-field').length;
+
+  if (fieldLength <= 0) {
+    $('<div class="b-default__add-field">'+ 
+      '<div class="b-sill__style">'+
+        '<select id="sill-style" name="sill-style" class="custom-select">'+
+          '<option value="Металл (белый)">Металл (белый)</option>'+
+          '<option value="Металл (другой)">Металл (другой)</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-width">'+
+        '<label for="b-level-3__frame-width-sill">Ширина</label>'+
+        '<select id="b-level-3__frame-width-sill" name="b-level-3__frame-width-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="150">150</option>'+
+          '<option value="200">200</option>'+
+          '<option value="250">250</option>'+
+          '<option value="300">300</option>'+
+          '<option value="350">350</option>'+
+          '<option value="400">400</option>'+
+          '<option value="450">450</option>'+
+          '<option value="500">500</option>'+
+          '<option value="550">550</option>'+
+          '<option value="600">600</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-sill__height">'+
+        '<label for="b-level-3__frame-height-sill">Длина</label>'+
+        '<select id="b-level-3__frame-height-sill" name="b-level-3__frame-height-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="3000">3000</option>'+
+          '<option value="3500">3500</option>'+
+        '</select>'+
+      '</div>'+
+      '<a href="" class="sill__remove"></a>'+
+      '</div>')
+    .fadeIn('slow')
+    .prependTo(item);
+
+    if (fieldLength == 0) {
+      $('#b-calc__frameTide #add-field__frameTide').css('display', 'none');
+    }
+  } 
+
+  $('.custom-select').styler({
+    selectSmartPositioning: false 
+  });
+
+  $('.sill__remove').click(function(event) {
+    event.preventDefault();
+
+    $('#b-calc__frameTide #add-field__frameTide').css('display', 'inline-block');
+    $(this).parent('.b-default__add-field').remove();
+  });
+
+  var widthVal = $('#b-field__frame-width').val();
+  if (widthVal >= 0) {
+    var num = parseFloat(widthVal);
+
+    if (isNaN(num)) {
+      $('#b-level-3__frame-height-sill-styler .jq-selectbox__select-text').text(0);
+      $('#b-level-3__frame-height-sill option:first').text(0);
+      $('#b-level-3__frame-height-sill option:first').val(0);
+      console.log('test')
+    } else {
+      $('#b-level-3__frame-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__frame-height-sill option:first').text(num);
+      $('#b-level-3__frame-height-sill option:first').val(num);
+    }
+
+    $('#b-field__frame-width').on('input', function() {
+      var widthVal = $(this).val();
+      var $heightVal = $('#b-level-3__frame-height-styler .jq-selectbox__select-text').text();
+      var num = parseFloat(widthVal);
+
+      console.log(num);
+      $('#b-level-3__frame-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__frame-height-sill option:first').text(num);
+      $('#b-level-3__frame-height-sill option:first').val(num);
+    });
+  }
+
+};
+
+$('#add-field__frameTide').click(function(event) {
+  event.preventDefault();
+
+  addFieldFrame('#b-calc__frameTide');
+});
+
+
 $('#add-field__sill').click(function(event) {
   event.preventDefault();
 
@@ -581,6 +762,8 @@ $('#add-field__balconySill').click(function(event) {
 
   addFieldBalconySill('#b-calc__balconySill');
 });
+
+
 
 
 $('#add-field__tide').click(function(event) {
@@ -597,11 +780,11 @@ $('#add-field__balconyTide').click(function(event) {
 
 
 $(function(){
-    $("input[name='services'").change(function(){
-        var input = $(this).parent().next().find('input[type="text"]');
-        $('input[name="distance"]').attr('readonly', true);
-        input.removeAttr('readonly');
-    });
+  $("input[name='services'").change(function(){
+    var input = $(this).parent().next().find('input[type="text"]');
+    $('input[name="distance"]').attr('readonly', true);
+    input.removeAttr('readonly');
+  });
 });
 
 // SWITCH WINDOWS
@@ -618,12 +801,44 @@ var $balcony5 = $('.b-balcony-box__level-5');
 var $balcony6 = $('.b-balcony-box__level-6');
 var $balcony7 = $('.b-balcony-box__level-7');
 
-// $(function() {
-//   if ($window1.hasClass('show')) {
-//     $('#window2 input','#window3 input').attr('checked', false);
-//     $('#window1 input').attr('checked', true);
-//   }
-// });
+var $frame3 = $('.b-frame-box__level-3');
+var $frame4 = $('.b-frame-box__level-4');
+var $frame5 = $('.b-frame-box__level-5');
+var $frame6 = $('.b-frame-box__level-6');
+
+function removeClassesForFrame() {
+  $frame3.removeClass('show');
+  $frame3.removeClass('hide');
+
+  $frame4.removeClass('show');
+  $frame4.removeClass('hide');
+
+  $frame5.removeClass('show');
+  $frame5.removeClass('hide');
+
+  $frame6.removeClass('show');
+  $frame6.removeClass('hide');
+}
+
+$('#frame1').click(function() {
+  removeClassesForFrame();
+  $frame3.addClass('show');
+});
+
+$('#frame2').click(function() {
+  removeClassesForFrame();
+  $frame4.addClass('show');
+});
+
+$('#frame3').click(function() {
+  removeClassesForFrame();
+  $frame5.addClass('show');
+});
+
+$('#frame4').click(function() {
+  removeClassesForFrame();
+  $frame6.addClass('show');
+});
 
 function removeClasses() {
   $window1.removeClass('show');
@@ -768,23 +983,44 @@ setTimeout(function(){
     $('.b-balcony__left').find('img').attr('src', 'img/calc/window-center1.jpg')
   });
 
+  // left2
+  $('#formBalconyGroup .jq-selectbox__dropdown .left__1-2').click(function() {
+    $('.b-balcony__left').find('img').attr('src', 'img/calc/window1.jpg')
+  });
+
+  $('#formBalconyGroup .jq-selectbox__dropdown .left__2-2').click(function() {
+    $('.b-balcony__left').find('img').attr('src', 'img/calc/window1-left.jpg')
+  });
+
+  $('#formBalconyGroup .jq-selectbox__dropdown .left__3-2').click(function() {
+    $('.b-balcony__left').find('img').attr('src', 'img/calc/window2-left.jpg')
+  });
+
   // door
 
   $('#formBalconyGroup .jq-selectbox__dropdown .door__1').click(function() {
-    $('.b-balcony__door-1').find('img').attr('src', 'img/calc/door1.jpg')
+    $('.b-balcony__door-1').find('img').attr('src', 'img/calc/door1-left.jpg')
   });
 
   $('#formBalconyGroup .jq-selectbox__dropdown .door__2').click(function() {
-    $('.b-balcony__door-1').find('img').attr('src', 'img/calc/door2.jpg')
+    $('.b-balcony__door-1').find('img').attr('src', 'img/calc/door2-left.jpg')
+  });
+
+  $('#formBalconyGroup .jq-selectbox__dropdown .door__3').click(function() {
+    $('.b-balcony__door-1').find('img').attr('src', 'img/calc/door4.jpg')
   });
 
   // door2
   $('#formBalconyGroup .jq-selectbox__dropdown .door__1-2').click(function() {
-    $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door1.jpg')
+    $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door1-left.jpg')
   });
 
   $('#formBalconyGroup .jq-selectbox__dropdown .door__2-2').click(function() {
-    $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door2.jpg')
+    $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door2-left.jpg')
+  });
+
+  $('#formBalconyGroup .jq-selectbox__dropdown .door__3-2').click(function() {
+    $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door4.jpg')
   });
 
   // right 
@@ -793,11 +1029,100 @@ setTimeout(function(){
   });
 
   $('#formBalconyGroup .jq-selectbox__dropdown .right__2').click(function() {
-    $('.b-balcony__right').find('img').attr('src', 'img/window3.jpg')
+    $('.b-balcony__right').find('img').attr('src', 'img/calc/window1-left.jpg')
   });
 
   $('#formBalconyGroup .jq-selectbox__dropdown .right__3').click(function() {
-    $('.b-balcony__right').find('img').attr('src', 'img/calc/window-center1.jpg')
+    $('.b-balcony__right').find('img').attr('src', 'img/calc/window2-left.jpg')
+  });
+}, 500);
+
+// SWITCH FRAME ITEM
+
+setTimeout(function(){
+  // 1
+  $('#formFrame .jq-selectbox__dropdown .window__1-1').click(function() {
+    $('.b-frame__1').find('img').attr('src', 'img/calc/window1.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__2-1').click(function() {
+    $('.b-frame__1').find('img').attr('src', 'img/calc/windowx.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__3-1').click(function() {
+    $('.b-frame__1').find('img').attr('src', 'img/calc/window1-right.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__4-1').click(function() {
+    $('.b-frame__1').find('img').attr('src', 'img/calc/window2-left.jpg')
+  });
+
+  // 2
+  $('#formFrame .jq-selectbox__dropdown .window__1-2').click(function() {
+    $('.b-frame__2').find('img').attr('src', 'img/calc/window1.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__2-2').click(function() {
+    $('.b-frame__2').find('img').attr('src', 'img/calc/windowx.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__3-2').click(function() {
+    $('.b-frame__2').find('img').attr('src', 'img/calc/window1-right.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__4-2').click(function() {
+    $('.b-frame__2').find('img').attr('src', 'img/calc/window2-left.jpg')
+  });
+
+  // 3
+  $('#formFrame .jq-selectbox__dropdown .window__1-3').click(function() {
+    $('.b-frame__3').find('img').attr('src', 'img/calc/window1.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__2-3').click(function() {
+    $('.b-frame__3').find('img').attr('src', 'img/calc/windowx.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__3-3').click(function() {
+    $('.b-frame__3').find('img').attr('src', 'img/calc/window1-right.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__4-3').click(function() {
+    $('.b-frame__3').find('img').attr('src', 'img/calc/window2-left.jpg')
+  });
+
+  // 4
+  $('#formFrame .jq-selectbox__dropdown .window__1-4').click(function() {
+    $('.b-frame__4').find('img').attr('src', 'img/calc/window1.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__2-4').click(function() {
+    $('.b-frame__4').find('img').attr('src', 'img/calc/windowx.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__3-4').click(function() {
+    $('.b-frame__4').find('img').attr('src', 'img/calc/window1-right.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__4-4').click(function() {
+    $('.b-frame__4').find('img').attr('src', 'img/calc/window2-left.jpg')
+  });
+
+  // 3
+  $('#formFrame .jq-selectbox__dropdown .window__1-5').click(function() {
+    $('.b-frame__5').find('img').attr('src', 'img/calc/window1.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__2-5').click(function() {
+    $('.b-frame__5').find('img').attr('src', 'img/calc/windowx.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__3-5').click(function() {
+    $('.b-frame__5').find('img').attr('src', 'img/calc/window1-right.jpg')
+  });
+
+  $('#formFrame .jq-selectbox__dropdown .window__4-5').click(function() {
+    $('.b-frame__5').find('img').attr('src', 'img/calc/window2-left.jpg')
   });
 }, 500);
 
@@ -828,6 +1153,25 @@ $('#formWindows').on('submit', function(e){
 });
 
 $('#formBalconyGroup').on('submit', function(e){
+  e.preventDefault();
+  
+  var $that = $(this),
+  formData = $that.serializeArray();
+
+  $.ajax({
+    url: $that.attr('action'),
+    type: $that.attr('method'),
+    data: {form_data: formData},
+    dataType: 'json',
+    success: function(json){
+      if(json){
+        $that.replaceWith(json);
+      }
+    }
+  });
+});
+
+$('#formFrame').on('submit', function(e){
   e.preventDefault();
   
   var $that = $(this),
