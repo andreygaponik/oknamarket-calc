@@ -304,7 +304,6 @@ function addFieldWindowsill(item) {
       var $heightVal = $('#b-level-3__window-height-styler .jq-selectbox__select-text').text();
       var num = parseFloat(widthVal);
 
-      console.log(num);
       $('#b-level-3__window-height-styler .jq-selectbox__select-text').text(num + 100);
       $('#b-level-3__window-height option:first').text(num + 100);
     });
@@ -744,6 +743,95 @@ function addFieldFrame(item) {
 
 };
 
+function addFieldSlope(item) {
+  var fieldLength = $('#b-calc__slope .b-default__add-field').length;
+
+  if (fieldLength <= 0) {
+    $('<div class="b-default__add-field">'+ 
+      '<div class="b-sill__style">'+
+        '<select id="slope-style" name="slope-style" class="custom-select">'+
+          '<option value="Металл (белый)">Металл (белый)</option>'+
+          '<option value="Металл (другой)">Металл (другой)</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-width">'+
+        '<label for="b-level-3__slope-width">Ширина</label>'+
+        '<select id="b-level-3__slope-width" name="b-level-3__slope-width" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="150">150</option>'+
+          '<option value="200">200</option>'+
+          '<option value="250">250</option>'+
+          '<option value="300">300</option>'+
+          '<option value="350">350</option>'+
+          '<option value="400">400</option>'+
+          '<option value="450">450</option>'+
+          '<option value="500">500</option>'+
+          '<option value="550">550</option>'+
+          '<option value="600">600</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-sill__height">'+
+        '<label for="b-level-3__slope-height">Длина</label>'+
+        '<select id="b-level-3__slope-height" name="b-level-3__slope-height" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="3000">3000</option>'+
+          '<option value="3500">3500</option>'+
+        '</select>'+
+      '</div>'+
+      '<a href="" class="sill__remove"></a>'+
+      '</div>')
+    .fadeIn('slow')
+    .prependTo(item);
+
+    if (fieldLength == 0) {
+      $('#b-calc__slope #add-field__slope').css('display', 'none');
+    }
+  } 
+
+  $('.custom-select').styler({
+    selectSmartPositioning: false 
+  });
+
+  $('.sill__remove').click(function(event) {
+    event.preventDefault();
+
+    $('#b-calc__slope #add-field__slope').css('display', 'inline-block');
+    $(this).parent('.b-default__add-field').remove();
+  });
+
+  var widthVal = $('#b-field__door-width').val();
+  if (widthVal >= 0) {
+    var num = parseFloat(widthVal);
+
+    if (isNaN(num)) {
+      $('#b-level-3__slope-height-styler .jq-selectbox__select-text').text(0);
+      $('#b-level-3__slope-height option:first').text(0);
+      $('#b-level-3__slope-height option:first').val(0);
+    } else {
+      $('#b-level-3__slope-height-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__slope-height option:first').text(num);
+      $('#b-level-3__slope-height option:first').val(num);
+    }
+
+    $('#b-field__door-width').on('input', function() {
+      var widthVal = $(this).val();
+      var $heightVal = $('#b-level-3__slope-height-styler .jq-selectbox__select-text').text();
+      var num = parseFloat(widthVal);
+
+      $('#b-level-3__slope-height-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__slope-height-option:first').text(num);
+      $('#b-level-3__slope-height-option:first').val(num);
+    });
+  }
+
+};
+
+$('#add-field__slope').click(function(event) {
+  event.preventDefault();
+
+  addFieldSlope('#b-calc__slope');
+});
+
 $('#add-field__frameTide').click(function(event) {
   event.preventDefault();
 
@@ -763,9 +851,6 @@ $('#add-field__balconySill').click(function(event) {
   addFieldBalconySill('#b-calc__balconySill');
 });
 
-
-
-
 $('#add-field__tide').click(function(event) {
   event.preventDefault();
 
@@ -776,6 +861,97 @@ $('#add-field__balconyTide').click(function(event) {
   event.preventDefault();
 
   addFieldBalcony('#b-calc__balconyTide');
+});
+
+function addVisor(item) {
+  var fieldLength = $('#b-calc__frameVisor .b-default__add-field').length;
+
+  if (fieldLength <= 0) {
+    $('<div class="b-default__add-field" id="visor">'+ 
+      '<div class="b-sill__style">'+
+        '<select id="sill-style" name="sill-style" class="custom-select">'+
+          '<option value="Металл (белый)">Металл (белый)</option>'+
+          '<option value="Металл (другой)">Металл (другой)</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-width">'+
+        '<label for="b-level-3__frame-width-sill">Ширина</label>'+
+        '<select id="b-level-3__frame-width-sill" name="b-level-3__frame-width-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="150">150</option>'+
+          '<option value="200">200</option>'+
+          '<option value="250">250</option>'+
+          '<option value="300">300</option>'+
+          '<option value="350">350</option>'+
+          '<option value="400">400</option>'+
+          '<option value="450">450</option>'+
+          '<option value="500">500</option>'+
+          '<option value="550">550</option>'+
+          '<option value="600">600</option>'+
+        '</select>'+
+      '</div>'+
+      '<div class="b-sill__height">'+
+        '<label for="b-level-3__frame-height-sill">Длина</label>'+
+        '<select id="b-level-3__frame-height-sill" name="b-level-3__frame-height-sill" class="custom-select">'+
+          '<option value="100">100</option>'+
+          '<option value="3000">3000</option>'+
+          '<option value="3500">3500</option>'+
+        '</select>'+
+      '</div>'+
+      '<a href="" class="sill__remove"></a>'+
+      '</div>')
+    .fadeIn('slow')
+    .prependTo(item);
+
+    if (fieldLength == 0) {
+      $('#b-calc__frameVisor #add-field__frameVisor').css('display', 'none');
+    }
+  } 
+
+  $('.custom-select').styler({
+    selectSmartPositioning: false 
+  });
+
+  $('#visor .sill__remove').click(function(event) {
+    event.preventDefault();
+
+    $('#b-calc__frameVisor #add-field__frameVisor').css('display', 'inline-block');
+    $(this).parent('.b-default__add-field').remove();
+  });
+
+  var widthVal = $('#b-field__frame-width').val();
+  if (widthVal >= 0) {
+    var num = parseFloat(widthVal);
+
+    if (isNaN(num)) {
+      $('#b-level-3__frame-height-sill-styler .jq-selectbox__select-text').text(0);
+      $('#b-level-3__frame-height-sill option:first').text(0);
+      $('#b-level-3__frame-height-sill option:first').val(0);
+      console.log('test')
+    } else {
+      $('#b-level-3__frame-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__frame-height-sill option:first').text(num);
+      $('#b-level-3__frame-height-sill option:first').val(num);
+    }
+
+    $('#b-field__frame-width').on('input', function() {
+      var widthVal = $(this).val();
+      var $heightVal = $('#b-level-3__frame-height-styler .jq-selectbox__select-text').text();
+      var num = parseFloat(widthVal);
+
+      console.log(num);
+      $('#b-level-3__frame-height-sill-styler .jq-selectbox__select-text').text(num);
+      $('#b-level-3__frame-height-sill option:first').text(num);
+      $('#b-level-3__frame-height-sill option:first').val(num);
+    });
+  }
+
+};
+
+$('#add-field__frameVisor').click(function(event) {
+  event.preventDefault();
+
+  addVisor('#b-calc__frameVisor');
 });
 
 
@@ -805,6 +981,27 @@ var $frame3 = $('.b-frame-box__level-3');
 var $frame4 = $('.b-frame-box__level-4');
 var $frame5 = $('.b-frame-box__level-5');
 var $frame6 = $('.b-frame-box__level-6');
+
+var $door1 = $('.b-door-box__level-1');
+var $door2 = $('.b-door-box__level-2');
+
+function removeClassesForDoors() {
+  $door1.removeClass('show');
+  $door1.removeClass('hide');
+
+  $door2.removeClass('show');
+  $door2.removeClass('hide');
+}
+
+$('#door1').click(function() {
+  removeClassesForDoors();
+  $door1.addClass('show');
+});
+
+$('#door2').click(function() {
+  removeClassesForDoors();
+  $door2.addClass('show');
+});
 
 function removeClassesForFrame() {
   $frame3.removeClass('show');
@@ -940,6 +1137,10 @@ setTimeout(function(){
     $('.b-window__left').find('img').attr('src', 'img/calc/window-center1.jpg')
   });
 
+  $('#formWindows .jq-selectbox__dropdown .center__0').click(function() {
+    $('.b-window__center').find('img').attr('src', 'img/window1.jpg');
+  });
+
   // center 
   $('#formWindows .jq-selectbox__dropdown .center__1').click(function() {
     $('.b-window__center').find('img').attr('src', 'img/calc/window1.jpg')
@@ -1021,6 +1222,14 @@ setTimeout(function(){
 
   $('#formBalconyGroup .jq-selectbox__dropdown .door__3-2').click(function() {
     $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door4.jpg')
+  });
+
+  $('#formBalconyGroup .jq-selectbox__dropdown .door__0').click(function() {
+    $('.b-balcony__door-1').find('img').attr('src', 'img/calc/door3.jpg')
+  });
+
+  $('#formBalconyGroup .jq-selectbox__dropdown .door__0-2').click(function() {
+    $('.b-balcony__door-2').find('img').attr('src', 'img/calc/door3.jpg')
   });
 
   // right 
@@ -1172,6 +1381,25 @@ $('#formBalconyGroup').on('submit', function(e){
 });
 
 $('#formFrame').on('submit', function(e){
+  e.preventDefault();
+  
+  var $that = $(this),
+  formData = $that.serializeArray();
+
+  $.ajax({
+    url: $that.attr('action'),
+    type: $that.attr('method'),
+    data: {form_data: formData},
+    dataType: 'json',
+    success: function(json){
+      if(json){
+        $that.replaceWith(json);
+      }
+    }
+  });
+});
+
+$('#formDoors').on('submit', function(e){
   e.preventDefault();
   
   var $that = $(this),

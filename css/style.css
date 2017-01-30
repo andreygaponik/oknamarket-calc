@@ -1424,6 +1424,11 @@ input:-moz-placeholder
     height: 500px;
 }
 
+.b-doors__door-box {
+    height: 650px;
+    position: relative;
+}
+
 .b-frame__frame-box {
     position: relative;
     height: 570px;
@@ -1432,6 +1437,8 @@ input:-moz-placeholder
 .b-window-box__level-2,
 .b-window-box__level-3,
 .b-window-box__level-1,
+.b-door-box__level-1,
+.b-door-box__level-2,
 .b-balcony-box__level-1,
 .b-balcony-box__level-2,
 .b-balcony-box__level-3,
@@ -1564,7 +1571,9 @@ input:-moz-placeholder
 .b-level-3__frame,
 .b-level-4__frame,
 .b-level-5__frame,
-.b-level-6__frame
+.b-level-6__frame,
+.b-level-1__door,
+.b-level-2__door
 {
     font-size: 0;
 
@@ -1572,6 +1581,20 @@ input:-moz-placeholder
 
     margin: 0 auto;
     padding: 58px 0 25px;
+}
+
+.b-level-1__window .b-window__center img {
+    width: auto;
+    max-height: 230px;
+}
+
+.b-level-1__door
+{
+    width: 125px;
+}
+
+.b-level-2__door {
+    width: 230px;
 }
 
 .b-level-1__window
@@ -1641,7 +1664,10 @@ input:-moz-placeholder
     margin-right: -8.5px;
 }
 
-.b-level-1__window div
+.b-level-1__window div,
+.b-level-2__window div,
+.b-level-1__door div,
+.b-level-2__door div
 {
     font-size: 16px;
 
@@ -1659,17 +1685,20 @@ input:-moz-placeholder
     max-width: 112px;
 }
 
-.b-level-1__window img
+.b-level-1__window img,
+.b-level-1__door div
 {
     max-width: 192px;
 }
 
-.b-level-2__window
+.b-level-2__window,
+.b-level-2__door
 {
     font-size: 0;
 }
 
-.b-level-2__window div
+.b-level-2__window div,
+.b-level-2__door div
 {
     font-size: 16px;
 
@@ -1678,12 +1707,14 @@ input:-moz-placeholder
     width: 50%;
 }
 
-.b-level-2__window .b-window__left
+.b-level-2__window .b-window__left,
+.b-level-2__door .b-door__left
 {
     text-align: right;
 }
 
-.b-level-2__window .b-window__right
+.b-level-2__window .b-window__right,
+.b-level-2__door .b-door__right
 {
     text-align: left;
 }
@@ -2139,6 +2170,20 @@ input[type='checkbox']:checked + label
     padding-left: 14px !important;
 
     background: url(../img/calc/icon-balcony7.png) 0 1px no-repeat !important;
+}
+
+.b-default__door1
+{
+    padding-left: 20px !important;
+
+    background: url(../img/calc/icon-door1.png) 0 2px no-repeat !important;
+}
+
+.b-default__door2
+{
+    padding-left: 30px !important;
+
+    background: url(../img/calc/icon-door2.png) 0 2px no-repeat !important;
 }
 
 .b-default__window1
@@ -3265,6 +3310,7 @@ input[type='checkbox']:checked + label
 
     .b-window-box__level-2,
     .b-window-box__level-3,
+    .b-window-box__level-1,
     .b-window-box__level-1
     {
         width: 396px;

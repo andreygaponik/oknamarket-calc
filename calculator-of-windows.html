@@ -131,14 +131,14 @@
 			<div class="row">
 				<div class="col-lg-8 col-md-8 b-calc">
 					<ul class="nav nav-tabs">
-					  <li><a data-toggle="tab" href="#home">Окна</a></li>
+					  <li class="active"><a data-toggle="tab" href="#home">Окна</a></li>
 					  <li><a data-toggle="tab" href="#menu1">Балконные группы</a></li>
-					  <li class="active"><a data-toggle="tab" href="#menu2">Балконные рамы</a></li>
+					  <li><a data-toggle="tab" href="#menu2">Балконные рамы</a></li>
 					  <li><a data-toggle="tab" href="#menu3">Двери</a></li>
 					</ul>
 
 					<div class="tab-content">
-					  <div id="home" class="tab-pane fade ">
+					  <div id="home" class="tab-pane fade in active">
 					    <form action="handler.php" method="post" id="formWindows">
 								<div class="b-calc__windows">
 									<div class="row">
@@ -160,6 +160,7 @@
 															<label for="b-level-1__window-center">Центральная <i class="star">*</i></label>
 
 															<select id="b-level-1__window-center" name="b-level-1__window-center" class="custom-select">
+																<option value="Фрамуга" class="center__0">Фрамуга</option>
 														    <option value="Глухая центральная" class="center__1">Глухая</option>
 														    <option value="Поворотная центральная" class="center__2">Поворотная</option>
 														    <option value="Поворотно-откидная центральная" class="center__3">Поворотно-откидная</option>
@@ -824,8 +825,7 @@
 														<div class="form-group b-balcony-box__field">
 															<label for="b-level-3__balcony-door">Дверь левая<i class="star">*</i></label>
 															<select id="b-level-3__balcony-door" name="b-level-3__balcony-door" class="custom-select">
-														    <option value="Поворотная" class="door__1">Поворотная</option>
-														    <option value="Поворотно-откидная" class="door__2">Поворотно-откидная</option>
+																<option value="Поворотная" class="door__0">Глухая</option>
 														    <option value="Раздвижная" class="door__3">Раздвижная</option>
 															</select> 
 														</div>
@@ -833,8 +833,7 @@
 														<div class="form-group b-balcony-box__field">
 															<label for="b-level-3__balcony-door">Дверь правая<i class="star">*</i></label>
 															<select id="b-level-3__balcony-door" name="b-level-3__balcony-door" class="custom-select">
-														    <option value="Поворотная" class="door__1-2">Поворотная</option>
-														    <option value="Поворотно-откидная" class="door__2-2">Поворотно-откидная</option>
+																<option value="Поворотная" class="door__0-2">Глухая</option>
 														    <option value="Раздвижная" class="door__3-2">Раздвижная</option>
 															</select> 
 														</div>
@@ -1290,13 +1289,13 @@
 								</div>
 							</form>
 					  </div>
-					  <div id="menu2" class="tab-pane fade in active">
+					  <div id="menu2" class="tab-pane fade">
 					    <form action="handler.php" method="post" id="formFrame">
 								<div class="b-calc__windows">
 									<div class="row">
 										<div class="col-lg-6 col-md-6">
 											<div class="b-frame__frame-box gray">
-												<div class="b-frame-box__level-3">
+												<div class="b-frame-box__level-3 show">
 													<div class="b-level-3__frame">
 														<div class="b-frame__1">
 															<img src="img/calc/window1.jpg" alt="">
@@ -1484,7 +1483,7 @@
 													</div>
 												</div>
 
-												<div class="b-frame-box__level-6 show">
+												<div class="b-frame-box__level-6">
 													<div class="b-level-6__frame">
 														<div class="b-frame__1">
 															<img src="img/calc/window1.jpg" alt="">
@@ -1713,6 +1712,22 @@
 										<div class="col-lg-12 col-md-12">
 											<div class="gray b-calc__default">
 												<div class="row">
+													<div class="col-lg-3 col-md-2">
+														<div class="align">
+															<h3>Козырек:</h3>
+														</div>
+													</div>
+													<div class="col-lg-9 col-md-12" id="b-calc__frameVisor">
+														
+														<a href="" class="add-field" id="add-field__frameVisor">+ Добавить</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12">
+											<div class="gray b-calc__default">
+												<div class="row">
 													<div class="col-lg-12 col-md-12">
 														<div class="align">
 															<div class="row">
@@ -1903,8 +1918,402 @@
 								</div>
 							</form>
 					  </div>
+					  <div id="menu3" class="tab-pane fade">
+					    <form action="handler.php" method="post" id="formDoors">
+								<div class="b-calc__windows">
+									<div class="row">
+
+										<div class="col-lg-6 col-md-6">
+											<div class="b-doors__door-box gray">
+												<div class="b-door-box__level-1 show">
+													<div class="b-level-1__door">
+														<div class="b-window__center">
+															<img src="img/calc/door1-left.jpg" alt="">
+														</div>
+
+														<p class="b-window__height">В. <span>1600 мм</span></p>
+														<p class="b-window__width">Ш. <span>2500 мм</span></p>
+													</div>
+
+													<div class="align">
+														<div class="form-group b-window-box__field">
+															<label for="b-level-1__window-center">Дверь <i class="star">*</i></label>
+
+															<select id="b-level-1__window-center" name="b-level-1__window-center" class="custom-select">
+														    <option value="Поворотная центральная" class="center__2">Поворотная</option>
+															</select> 
+														</div>
+													</div>
+												</div>
+												<div class="b-door-box__level-2">
+													<div class="b-level-2__door">
+														<div class="b-door__left">
+															<img src="img/calc/door1-left.jpg" alt="">
+														</div>
+														<div class="b-door__right">
+															<img src="img/calc/door1-left.jpg" alt="">
+														</div>
+
+														<p class="b-window__height">В. <span>1600 мм</span></p>
+														<p class="b-window__width">Ш. <span>2500 мм</span></p>
+													</div>
+
+													<div class="align">
+														<div class="form-group b-window-box__field">
+															<label for="b-level-2__window-left">Левая <i class="star">*</i></label>
+
+															<select id="b-level-2__window-left" name="b-level-2__window-left" class="custom-select">
+														    <option value="Поворотная левая" class="left__2">Поворотная</option>
+															</select> 
+														</div>
+
+														<div class="form-group b-window-box__field">
+															<label for="b-level-3__window-right">Правая <i class="star">*</i></label>
+
+															<select id="b-level-3__window-right" name="b-level-3__window-right" class="custom-select">
+														    <option value="Поворотная правая" class="right__2">Поворотная</option>
+															</select> 
+														</div>
+													</div>
+												</div>
+
+												<div class="message message-absolute">
+													<p><strong>Стоимость конструкции: 345 руб.</strong></p>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-6 col-md-6">
+
+											<div class="gray b-calc__default">
+												<div class="align">
+													<h3>Тип конструкции <i class="star">*</i></h3>
+
+													<div class="btn-group btn-group-horisontal b-default__select">
+										        <label class="btn active b-default__door1" id="door1">
+										          <input type="radio" name='door' value="door1" checked>
+										          <i class="fa fa-circle-o fa-2x"></i>
+										          <i class="fa fa-dot-circle-o fa-2x"></i>
+										          <span>1</span>
+										        </label>
+										        <label class="btn b-default__door2" id="door2">
+										          <input type="radio" name='door' value="door2">
+										          <i class="fa fa-circle-o fa-2x"></i>
+										          <i class="fa fa-dot-circle-o fa-2x"></i>
+										          <span>2</span>
+										        </label>
+										      </div>
+												</div>
+											</div>
+
+											<div class="gray b-calc__default">
+												<div class="align">
+										      <div class="form-group b-window-box__field">
+															<label for="b-field__door-width">
+																Ширина в мм. 
+																<i class="star">*</i>
+															</label>
+															<input id="b-field__door-width" name="b-field__door-width" value="" type="text" class="b-field__input">
+													</div>
+
+													<div class="form-group b-window-box__field">
+															<label for="b-field__door-height">
+																Высота в мм.
+																<i class="star">*</i>
+															</label>
+															<input id="b-field__door-height" name="b-field__door-height" value="" type="text" class="b-field__input">
+													</div>
+												</div>
+											</div>
+											
+											<div class="gray b-calc__default margin__bottom-none">
+												<div class="align">
+													<div class="form-group b-window-box__field">
+														<label>Профиль <i class="star">*</i></label>
+
+														<select class="custom-select" id="shape" name="shape">
+													    <option value="Dexen a-58">Dexen a-58</option>
+													    <option value="Dexen a-59">Dexen a-59</option>
+													    <option value="Dexen a-60">Dexen a-60</option>
+														</select> 
+													</div>
+
+													<div class="form-group b-window-box__field">
+														<label >Цвет <i class="star">*</i></label>
+
+														<select class="custom-select" id="color" name="color">
+													    <option value="Белый">Белый</option>
+													    <option value="Красный">Красный</option>
+													    <option value="Черный">Черный</option>
+														</select> 
+													</div>
+
+													<div class="form-group b-window-box__field">
+														<label>Фурнитура <i class="star">*</i></label>
+
+														<select class="custom-select" id="accessories" name="accessories">
+													    <option value="Elementis">Elementis</option>
+													    <option value="Elementis2">Elementis2</option>
+													    <option value="Elementis3">Elementis3</option>
+														</select> 
+													</div>
+
+													<div class="form-group b-window-box__field">
+														<label>Заполнение <i class="star">*</i></label>
+
+														<select class="custom-select" id="filling" name="filling">
+													    <option value="Стеклопакет">Стеклопакет</option>
+													    <option value="Стеклопакет2">Стеклопакет2</option>
+													    <option value="Стеклопакет3">Стеклопакет3</option>
+														</select> 
+													</div>
+
+													<div class="form-group b-window-box__field">
+														<label>Ручка <i class="star">*</i></label>
+
+														<select class="custom-select" id="door-handle" name="door-handle">
+													    <option value="Офисная(скоба)">Офисная(скоба)</option>
+														</select> 
+													</div>
+
+													<div class="form-group b-window-box__field">
+														<label>Замок <i class="star">*</i></label>
+
+														<select class="custom-select" id="lock" name="lock">
+													    <option value="Однозапорный">Однозапорный</option>
+														</select> 
+													</div>
+
+													<div class="form-group b-window-box__field">
+														<label>Сердцевина <i class="star">*</i></label>
+
+														<select class="custom-select" id="door-core" name="door-core">
+													    <option value="Ключ-ключ">Ключ-ключ</option>
+														</select> 
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="col-lg-12 col-md-12">
+											<h2 class="title title-h2">Дополнительные комплектующие</h2>
+
+											<div class="gray b-calc__default">
+												<div class="row">
+													<div class="col-lg-3 col-md-2">
+														<div class="align">
+															<h3>Откос ПВХ:</h3>
+														</div>
+													</div>
+													<div class="col-lg-9 col-md-12" id="b-calc__slope">
+														
+														<a href="" class="add-field" id="add-field__slope">+ Добавить</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12">
+											<div class="gray b-calc__default">
+												<div class="row">
+													<div class="col-lg-12 col-md-12">
+														<div class="align">
+															<div class="row">
+																<div class="col-lg-6 col-md-11 col-xs-12">
+
+																	<div class="form-group b-window-box__field">
+																		<label>Доводчик, шт </label>
+																		
+																		<div class="b-calc__counter q">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="closers-num" name="closers-num" readonly value="0" class="input-value"> 
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label>Наличник, м.п </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="casing-num" name="casing-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label>Набор по уходу, шт. </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="set-num" name="set-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label>Шпрос, кол-во полей </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="shpros-num" name="shpros-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label>Ножка упор, шт </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="leg-num" name="leg-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																</div>
+																<div class="col-lg-6 col-md-11 col-xs-12">
+																	<div class="form-group b-window-box__field">
+																		<label>Ограничитель открывания, шт. </label>
+																		
+																		<div class="b-calc__counter q">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="lock-num" name="lock-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label >Отделочная полоса, м.п. </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="tape-num" name="tape-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label >Алюминиевый порог, шт </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="threshold" name="threshold" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<label>Вентиляционная решетка, шт. </label>
+																		
+																		<div class="b-calc__counter b">
+																			<a href="" class="minus"><span>-</span></a>
+																			<input type="text" id="valves-num" name="valves-num" readonly value="0" class="input-value">
+																			<a href="" class="plus"><span>+</span></a>
+																		</div>
+																	</div>
+
+																	<div class="form-group b-window-box__field">
+																		<div class="b-width__el">
+															        <label>Парогидроизоляционные ленты </label>
+															        <select class="custom-select" id="tape-select" name="tape-select" data-placeholder="Нет">
+															        <option></option>
+															          <option value="Нет">Нет</option>
+															          <option value="Да">Да</option>
+															        </select>
+															      </div>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="message">
+													<p><strong>Стоимость конструкции: 345 руб.</strong></p>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12">
+											<div class="gray b-calc__default">
+												<div class="row">
+													<div class="col-lg-12 col-md-12">
+														<div class="align">
+															<div class="row">
+																<div class="col-lg-8 col-md-8 col-sm-9 col-xs-9">
+																	<div class="form-group align-right">
+																		<div class="btn-group btn-group-vertical b-default__select">													        
+															        <label class="btn active">
+																        <input type="radio" id="" name='services' value="Замер, демонтаж, монтаж, доставка" >
+																        <i class="fa fa-circle-o fa-2x"></i>
+																        <i class="fa fa-dot-circle-o fa-2x"></i>
+																        <span>Замер, демонтаж, монтаж, доставка</span>
+																      </label>
+																			<div class="b-width__el">
+																	      <input id="" name="distance" value="" type="text" class="b-field__input" readonly>
+																	    </div>
+
+																	    <label class="btn">
+																        <input type="radio" name='services' value="Замер, монтаж, доставка">
+																        <i class="fa fa-circle-o fa-2x"></i>
+																        <i class="fa fa-dot-circle-o fa-2x"></i>
+																        <span>Замер, монтаж, доставка</span>
+																      </label>
+																			<div class="b-width__el">
+																	      <input name="distance" value="" type="text" class="b-field__input" readonly>
+																	    </div>
+
+																	    <label class="btn">
+																        <input type="radio" name='services' value="Замер, доставка">
+																        <i class="fa fa-circle-o fa-2x"></i>
+																        <i class="fa fa-dot-circle-o fa-2x"></i>
+																        <span>Замер, доставка</span>
+																      </label>
+																			<div class="b-width__el">
+																	      <input name="distance" value="" type="text" class="b-field__input" readonly>
+																	    </div>
+
+																	    <label class="btn">
+																        <input type="radio" name='services' value="Доставка">
+																        <i class="fa fa-circle-o fa-2x"></i>
+																        <i class="fa fa-dot-circle-o fa-2x"></i>
+																        <span>Доставка</span>
+																      </label>
+																			<div class="b-width__el">
+																	      <input name="distance" value="" type="text" class="b-field__input" readonly>
+																	    </div>
+															      </div>
+																	</div>
+																	<div class="clearfix"></div>
+																</div>
+
+																<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 services__description">
+																	<span>километров от города</span>
+																</div>
+																<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 services__description">
+																	<span>километров от города</span>
+																</div>
+																<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 services__description">
+																	<span>километров от города</span>
+																</div>
+																<div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 services__description">
+																	<span>километров от города</span>
+																</div>
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</form>
+					  </div>
 					</div>
-					
 
 				</div>
 
