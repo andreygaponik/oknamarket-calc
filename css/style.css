@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 /*COMMONS*/
 
 body
@@ -45,15 +49,29 @@ body h4
 .pdf .wrapper {
     box-shadow: none;
     border: none;
-    padding: 50px;
+    padding: 0px;
     max-width: 750px;
+}
+
+.b-windows__window-box.p-box {
+    height: auto;
+}
+
+.p-footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.p-footer .left:last-child {
+    margin-right: 0;
+    float: right;
 }
 
 .pdf .header
 {
     overflow: hidden;
     border-bottom: 1px solid #000;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
 }
 
 .pdf .left {
@@ -65,7 +83,7 @@ body h4
 }
 
 .pdf .p-content {
-    padding-top: 20px;
+    padding-top: 15px;
     border-bottom: 1px solid #000;
 }
 
@@ -78,7 +96,7 @@ body h4
 }
 
 .logo-pdf {
-    max-width: 140px;
+    max-width: 230px;
 }
 
 .p-content .b-level-1__window,
